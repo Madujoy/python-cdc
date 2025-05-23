@@ -49,5 +49,3 @@ def jogo_da_forca():
 # Inicia o jogo quando o script é executado
 if __name__ == "__main__":
     jogo_da_forca()
-
-
