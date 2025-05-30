@@ -1,33 +1,44 @@
-#python 
-# Importa o módulo random para seleção aleatória de palavras import de randoom 
+#python
+#Importa o modulo random para seleçao aleatoria de palavras
+import random
 
-# Lista de palavras para o jogo (banco de palavras)
-palavras = ['maçã', 'banana', 'laranja', 'uva', 'morango']
+#Lista de palavras para o jogo (banco de palavras)
+palavras = ['maça', 'banana', 'laranja', 'uva', 'morango']
 
-def jogo_da_forca(): 
-   #seleciona aletoriamente uma palavra da lista 
-   palavra_secreta = random.choice(palavras)
+def jogo_da_forca():
+    """
+    Funçao principal que gerencia toda a logica o jogo da forca:
+    - Seleçao da palavra
+    - Controle e tentativas
+    - Validaçao das letras
+    - Exibiçao do estado do jogo
+    """
 
-   # Lista para armazenar as letras descobertas (inicialmente todas ocultas)
-   letras_corretas = ['_'] * len(palavra_secreta)
+    # Seleciona aleatorimente uma palavra da lista
+    palavra_secreta = random.choice(palavras)
 
-   #lista para registrar letras incorretas digitadas 
-   letras_erradas = []
+    # Lista para armaenar a letras decobertas (inicialmente todas ocultas)
+    letras_corretas = ['_'] * len(palavra_secreta)
 
-   #define o número máximo de tentativas permitidas 
-   tentativas_restantes = 6
-   #mensagem inicial do jogo 
-   print("/nBem-vindo ao jogo da forca!")
-   print(f"você tem{tentativas_restantes} tentativas para adivinhar a palavra./n")
-   #loop principal do jogo: continua enquanto houver tentativas e letras faltando 
-   while tentativas_restantes > 0 and '_' in letras_corretas:
-        # exibe o progresso atual do jogador
+    # Lista para registrar letras incorretas digitadas
+    letras_erradas = []
+
+    # Define o numero maximo de tehntativas permitidas
+    tentativas_restantes = 6
+
+    # Mensagem inicial do jogo
+    print("\Bem-vindo ao jogo da forca!")
+    print(f"Voce tem {tentativas_restantes} tentativa pra adivinhar a palavra.\n")
+
+    # Loop principal do jogo: continua enquanto houver tentativasve letras faltando
+    while tentativas_restantes > 0 and '_' in letras_corretas:
+        # Exibe o progresso atual do jogador
         print(' '.join(letras_corretas))
 
-        # Solicita e processa a tentativa do jogador
-        tentativa = input("\nDigite uma letra: ").lower()  # Converte para minúscula
+        # Solicita e procassa a tentativa do jogador
+        tentativa = input("\nDigite uma letra: ").lower()  # Converte para minuscula
 
-        # Verifica se a letra está na palavra secreta
+        # Verifica se a letra esta na palavra secreta
         if tentativa in palavra_secreta:
             # Atualiza as letras corretas reveladas
             for indice, letra in enumerate(palavra_secreta):
@@ -37,15 +48,21 @@ def jogo_da_forca():
         else:
             # Trata letra incorreta
             letras_erradas.append(tentativa)  # Registra a tentativa errada
-            tentativas_restantes -= 1         # Reduz o número de tentativas
-            
-        # Feedback imediato para o jogador
-            print(f"\nLetra incorreta! Tentativas restantes: {tentativas_restantes}")
-            if letras_erradas:  # Só mostra se houver letras erradas
-                print(f"Letras erradas: {', '.join(letras_erradas)}")
+            tentativas_restantes -= 1         # Reduz o numero de tentativas
 
-# Verificação final do resultado do jogo
-   ppp
-# Inicia o jogo quando o script é executado
+            # Feedback imediato para o jogador
+            print(f"\nLetra incorreta! Tentativas restantes:{tentativas_restantes}")
+            if letras_erradas: # So mostra se houver letras erradas
+                print(f"Letra erradas:{', '.join(letras_erradas)}")
+
+        # Verificaçao final do resultado do jogo
+        if '_' not in letras_corretas:
+            # Vitoria: todas as letras foram reveladas
+            print(f"\Parabens! Voce ganhou! A palavra era: {palavra_secreta}")
+        else:
+            # Derrota: acabaram as tentativas
+            print(f"\Voce perdeu! A palavra era: {palavra_secreta}")
+        
+# Inicia o jogo quando o script e executado
 if __name__ == "__main__":
     jogo_da_forca()

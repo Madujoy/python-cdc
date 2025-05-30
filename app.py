@@ -60,7 +60,7 @@ print("Contagem de 0 a 4:")
 i = 0
 while i < 5:
     print(i)
-    i += # Incrementa o contador
+    i += 1 # Incrementa o contador
 
 # Loop for com acesso ao indice e elemento simultaneamente usando enumerate
 print("Elementos da lista com seus indices:")
